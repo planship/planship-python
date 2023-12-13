@@ -1,0 +1,18 @@
+loaders:
+  - type: python
+    search_path: [planship]
+processors:
+  - type: filter
+  - type: smart
+  - type: crossref
+renderer:
+  type: mkdocs
+  output_directory: docs
+  pages:
+    - title: Planship class
+      contents:
+        - planship.planship.Planship.*
+  mkdocs_config:
+    site_name: planship-python
+    theme: material
+    repo_url: https://github.com/planship/planship-python

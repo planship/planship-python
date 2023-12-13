@@ -1,0 +1,2 @@
+md5 ac9af66e2b009caff76e9f8fad32868c content/planship-class.md
+md5 b2c6cfd4a6de60e93afb048fd53de0fc mkdocs.yml

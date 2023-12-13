@@ -1,0 +1,6 @@
+docs_dir: content
+nav:
+- Planship class: planship-class.md
+repo_url: https://github.com/planship/planship-python
+site_name: planship-python
+theme: material
