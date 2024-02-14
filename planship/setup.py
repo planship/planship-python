@@ -6,7 +6,7 @@ this_directory = Path(__file__).parent
 long_description = (this_directory / "README.md").read_text()
 
 NAME = "planship"
-VERSION = "0.0.2"
+VERSION = "0.1.1"
 # To install the library, run the following
 #
 # python setup.py install

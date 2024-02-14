@@ -3,6 +3,18 @@ install-dev:
 	-python3 -m pip install -e planship_openapi_gen
 	-python3 -m pip install -e planship
 
+.PHONY: build
+build:
+	-rm -rf planship_openapi_gen/dist planship/dist planship_openapi_gen/build planship/build
+	-python3 -m build planship_openapi_gen
+	-python3 -m build planship
+
+
+.PHONY: deploy
+deploy:
+	-twine upload planship_openapi_gen/dist/*
+	-twine upload planship/dist/*
+
 .PHONY: isort
 isort:  ## Run isort on the package.
 	-isort --check-only planship

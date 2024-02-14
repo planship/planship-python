@@ -2,11 +2,11 @@ from typing import Dict, List, Optional
 
 from planship_openapi_gen.api import (
     CustomersApi,
+    CustomerSubscriptionsApi,
     EntitlementsApi,
     MeteredUsageApi,
     ProductsApi,
     SubscriptionCustomersApi,
-    CustomerSubscriptionsApi,
 )
 from planship_openapi_gen.models import (
     Customer,
@@ -38,12 +38,12 @@ from .models import (
 
 
 class Planship(Base):
-    def __init__(self, url: str, product_slug: str, client_id: str, client_secret: str):
+    def __init__(self, product_slug: str, url: str, client_id: str, client_secret: str):
         """Create an instance of the Planship API client class
 
         Args:
-            url (str): Planship API service endpoint URL (E.g. https://api.planship.io)
             product_slug (str): Planship product slug
+            url (str): Planship API service endpoint URL (E.g. https://api.planship.io)
             client_id (str): Planship API client ID
             client_secret (str): Planship API client secret
         """
@@ -142,7 +142,9 @@ class Planship(Base):
         Returns:
             CustomerSubscriptionWithPlan: Instance of the CustomerSubscriptionWithPlan class
         """
-        return self.get_api_instance(CustomerSubscriptionsApi).get_customer_plan_subscription(
+        return self.get_api_instance(
+            CustomerSubscriptionsApi
+        ).get_customer_plan_subscription(
             customer_id,
             subscription_id,
         )
@@ -294,7 +296,9 @@ class Planship(Base):
         Returns:
             List[CustomerSubscriptionWithPlan]: List of instances of the CustomerSubscriptionWithPlan class
         """
-        return self.get_api_instance(CustomerSubscriptionsApi).list_customer_plan_subscriptions(
+        return self.get_api_instance(
+            CustomerSubscriptionsApi
+        ).list_customer_plan_subscriptions(
             customer_id,
         )
 
