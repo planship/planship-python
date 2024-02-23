@@ -38,7 +38,14 @@ from .models import (
 
 
 class Planship(Base):
-    def __init__(self, product_slug: str, url: str, client_id: str, client_secret: str):
+    def __init__(
+        self,
+        product_slug: str,
+        client_id: str,
+        client_secret: str,
+        *,
+        baseUrl: str = "https://api.planship.io"
+    ):
         """Create an instance of the Planship API client class
 
         Args:
@@ -47,7 +54,9 @@ class Planship(Base):
             client_id (str): Planship API client ID
             client_secret (str): Planship API client secret
         """
-        super().__init__(url=url, client_id=client_id, client_secret=client_secret)
+        super().__init__(
+            client_id=client_id, client_secret=client_secret, baseUrl=baseUrl
+        )
         self.product_slug = product_slug
 
     def get_product(self) -> Product:

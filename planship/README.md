@@ -1,6 +1,7 @@
 # planship-python
 
-Welcome to the Python client for [Planship](https://planship.io).
+Welcome to the Python client for the [Planship API](https://docs.planship.io/integration). [Planship](https://planship.io) enables developers to build subscription logic for product pricing based on any combination of features, seats, and usage.
+
 
 ## Installation and basic usage
 
@@ -19,7 +20,6 @@ from planship import Planship
 
 planship = Planship(
     "clicker-demo",                         # Planship product slug
-    "https://api.planship.io",              # Planship API endpoint URL
     "273N1SQ3GQFZ8JSFKIOK",                 # Planship API client ID
     "GDSfzPD2NEM5PEzIl1JoXFRJNZm3uAhX"      # Planship API client secret
 )
@@ -33,20 +33,21 @@ customer = planship.create_customer({
     "email:": "vader@empire.gov"
 })
 
-# Subscribe the customer with a given ID to a plan with a slug "medium"
+# Subscribe the customer to a plan with the slug "medium"
 subscription = planship.create_subscription(customer.id, "medium")
 
-# Retrieve entitlements for a customer with a give ID
+# Retrieve entitlements for the customer
 entitlements = planship.get_entitlements(customer.id)
 
-# Report usage for a customer with given ID for a given metering ID
+# Report 11 units of usage for the "api-call" metering ID for the customer
 planship.report_usage(customer.id, "api-call", 11)
 ```
 
-The complete reference for the `Planship` class can be found [here](./docs/content/planship-class.md).
+The complete reference for the `Planship` class can be found [here](https://github.com/planship/planship-python/blob/master/docs/content/planship-class.md).
 
 ## Links
 
 - [Planship documentation](https://docs.planship.io)
+- [Sign up for Planship](https://app.planship.io/auth/sign-up)
+- [Planship Python client class reference](https://github.com/planship/planship-python/blob/master/docs/content/planship-class.md)
 - [Planship Python client at PyPI](https://pypi.org/project/planship/)
-- [Planship Console sign-up](https://app.planship.io/auth/sign-up)

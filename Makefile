@@ -15,6 +15,11 @@ deploy:
 	-twine upload planship_openapi_gen/dist/*
 	-twine upload planship/dist/*
 
+.PHONY: test-deploy
+test-deploy: build
+	-twine upload --repository testpypi planship_openapi_gen/dist/*
+	-twine upload --repository testpypi planship/dist/*
+
 .PHONY: isort
 isort:  ## Run isort on the package.
 	-isort --check-only planship

@@ -7,13 +7,13 @@ from .http_basic_auth_configuration import HttpBasicAuthConfiguration
 
 
 class Base:
-    _url: str
+    _baseUrl: str
     __client_id: str
     __client_secret: str
     __access_token: str = None
 
-    def __init__(self, url: str, client_id: str, client_secret: str):
-        self._url = url
+    def __init__(self, client_id: str, client_secret: str, baseUrl: str):
+        self._baseUrl = baseUrl
         self.__client_id = client_id
         self.__client_secret = client_secret
 
@@ -26,7 +26,7 @@ class Base:
             self.__refresh_access_token()
 
         configuration = planship_openapi_gen.Configuration(
-            host=self._url,
+            host=self._baseUrl,
             access_token=self.__access_token,
         )
 
@@ -38,7 +38,7 @@ class Base:
 
     def get_access_token(self) -> TokenResponse:
         configuration = HttpBasicAuthConfiguration(
-            host=self._url,
+            host=self._baseUrl,
             username=self.__client_id,
             password=self.__client_secret,
         )
